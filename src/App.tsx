@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import GlobalStyle from "./components/GlobalStyle";
-import CommentsComponents from "./components/CommentsComponents";
-import MarkdownRenderer from "./components//MarkdownRenderer";
+import { Post } from "./pages/Post";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <MarkdownRenderer />
-      <CommentsComponents />
+      <BrowserRouter>
+        <GlobalStyle />
+        <Routes>
+          <Route path="/" element={<Post />} />
+          {/* <Route path="/" element={<Post />} />
+          <Route path="/" element={<Post />} /> */}
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

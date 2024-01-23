@@ -50,7 +50,6 @@ function CreateComments() {
   return (
     <form onSubmit={handleOnSubmit}>
       <div>
-        {" "}
         <input
           name="nickname"
           type="text"
