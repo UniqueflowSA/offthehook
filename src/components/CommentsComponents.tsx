@@ -1,7 +1,11 @@
 import React, { useEffect, useReducer } from "react";
 import CommentsList from "./CommentsList";
 import CreateComments from "./CreateComments";
+import { useParams } from "react-router-dom";
 
+type PostProps = {
+  slug: string;
+};
 // type State = {
 //   createComments:{},
 
@@ -21,12 +25,14 @@ function reducer(state: [], action: any) {
 }
 
 function CommentsComponents() {
+  const { slug } = useParams<PostProps>();
   const [formData, dispatch] = useReducer(reducer, []);
+  console.log("아이아이" + slug);
 
   const onGet = () => {
     //시트 데이터 가져오기
     fetch(
-      "https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec",
+      `https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec?post=${slug}`,
       {
         method: "GET",
       }
@@ -47,6 +53,7 @@ function CommentsComponents() {
         body: JSON.stringify({
           action: "create",
           data: createForm,
+          post: slug,
         }),
       }
     )
@@ -79,6 +86,7 @@ function CommentsComponents() {
         body: JSON.stringify({
           action: "remove",
           data: key,
+          post: slug,
         }),
       }
     )

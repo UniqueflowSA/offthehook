@@ -9,7 +9,7 @@ type PostProps = {
   slug: string;
 };
 
-export const Post: React.FC = () => {
+function Post() {
   const [mdSource, setMdSource] = useState<string | null>(null);
   const { project, slug } = useParams<PostProps>();
 
@@ -48,6 +48,6 @@ export const Post: React.FC = () => {
       </>
     </div>
   );
-};
+}
 
 export default Post;
