@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+
 import { PostList, Post } from "./pages";
+import { Footer, Header } from "./components";
 
 type PostMetadata = {
   title: string;
@@ -28,12 +31,21 @@ function App() {
   }, []);
   return (
     <>
+      <StyledHeader />
       <Routes>
         <Route path="/" element={<PostList posts={posts} />} />
         <Route path="/posts/:project/:slug" element={<Post />} />
       </Routes>
+      <StyledFooter />
     </>
   );
 }
 
 export default App;
+
+const StyledHeader = styled(Header)`
+  height: 120px;
+`;
+const StyledFooter = styled(Footer)`
+  height: 120px;
+`;

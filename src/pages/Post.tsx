@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import CommentsComponents from "../components/CommentsComponents";
 
 type PostProps = {
-  project: string;
+  project?: string;
   slug: string;
 };
 
-function Post() {
+export function Post() {
   const [mdSource, setMdSource] = useState<string | null>(null);
-  const { project, slug } = useParams<PostProps>();
+  const { slug } = useParams<PostProps>(); //project 폴더 추가시에 추가요망
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPostContent = async () => {
@@ -40,7 +41,7 @@ function Post() {
           {mdSource}
         </ReactMarkdown>
         <div className="home-button">
-          <Link to="/">Home</Link>
+          <button onClick={() => navigate("/")}>Home</button>
         </div>
         <div>
           <CommentsComponents />

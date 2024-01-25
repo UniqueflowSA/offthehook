@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
   *{
     font-family: "Pretendard";
   }
-    /* body{
+    body{
+      width:100%;
+      height:100%;
       margin:0;
       padding:0;
       box-sizing: border-box;
@@ -15,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content:center;
     align-items:center;
-  } */
+  }
   /* .App{
     background-color:white;
     box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
