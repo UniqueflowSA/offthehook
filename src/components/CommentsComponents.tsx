@@ -27,7 +27,6 @@ function reducer(state: [], action: any) {
 function CommentsComponents() {
   const { slug } = useParams<PostProps>();
   const [formData, dispatch] = useReducer(reducer, []);
-  console.log("아이아이" + slug);
 
   const onGet = () => {
     //시트 데이터 가져오기

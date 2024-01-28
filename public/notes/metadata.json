@@ -1,30 +1,34 @@
 [
   {
-    "title": "SEO 최적화 가이드",
-    "summary": "검색 엔진 최적화(SEO)를 위한 가이드라인과 팁",
+    "title": "GarlicB.log",
+    "summary": "GarlicB.log 블로그 기본 설명",
     "date": "2023-05-08",
-    "project": "none",
-    "slug": "1"
+    "category": "blabla",
+    "slug": "1",
+    "imgurl": "https://images.unsplash.com/photo-1671920090611-9a40303b52cb?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "title": "사용자 경험 개선을 위한 방법",
     "summary": "사용자 경험(UX)을 개선하기 위한 다양한 방법과 전략",
     "date": "2023-05-08",
-    "project": "none",
-    "slug": "2"
+    "category": "blabla",
+    "slug": "2",
+    "imgurl": "https://media.giphy.com/media/1zkVuO55wfgDC/giphy.gif?cid=ecf05e47uudqpl6ujlelusiwqrd4ar0qb39wzrgtp23d2fdk&ep=v1_gifs_search&rid=giphy.gif&ct=g"
   },
   {
     "title": "효율적인 코드 작성법",
     "summary": "효율적인 코드 작성을 위한 팁과 관례",
     "date": "2023-05-07",
-    "project": "cool",
-    "slug": "3"
+    "category": "coding",
+    "slug": "3",
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWx1d2xicXk0djVoZTg4cnBpdDkyYjhyZGM1bGJ6cHR5bHdsb25kOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/twxoPjMpsijwPFBVqs/giphy.gif"
   },
   {
     "title": "보안 취약점 점검 방법",
-    "summary": "애플리케이션의 보안 취약점을 점검하는 방법과 도구 소개",
+    "summary": "애플리케이션의 보안 취약점을 점검하는 방법과 도구 소개하려고 하는데 왜 그런지 나도 몰라 ㅇㅇㅁㄴ아ㅓㄴㅁ아ㅓㅁㄴ아ㅓ아이안이ㅏㄴ마움넝ㅁ누아ㅓㄴ무암너우운마ㅓ움나ㅓ움나ㅓㅇㅁ니ㅏ엄니ㅏ어미나어",
     "date": "2023-05-06",
-    "project": "hooks",
-    "slug": "4"
+    "category": "notice",
+    "slug": "4",
+    "imgurl": "https://media.giphy.com/media/vwI4mYEHP8k0w/giphy.gif?cid=790b76116kw4ej4zdjdcyviw1ga1p8anhxm2qjwx75fwkw5g&ep=v1_gifs_search&rid=giphy.gif&ct=g"
   }
 ]
