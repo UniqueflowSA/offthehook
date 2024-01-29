@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   useCommentsFunctionContext,
   useCommentsStateContext,
 } from "./CommentsComponents";
 import styled from "styled-components";
 import { VscCheck, VscChromeClose } from "react-icons/vsc";
-
-type GetCommentsItem = [number, string, string, string, string];
 
 function CommentsList() {
   const [ModalToggleKey, setModalToggleKey] = useState(0);
