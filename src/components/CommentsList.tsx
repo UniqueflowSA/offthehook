@@ -1,16 +1,19 @@
 import React, { useContext, useState } from "react";
 import {
-  CommentsStateContext,
-  CommentsFunctionContext,
+  useCommentsFunctionContext,
+  useCommentsStateContext,
 } from "./CommentsComponents";
+import styled from "styled-components";
+import { VscCheck, VscChromeClose } from "react-icons/vsc";
+
+type GetCommentsItem = [number, string, string, string, string];
 
 function CommentsList() {
   const [ModalToggleKey, setModalToggleKey] = useState(0);
   const [password, setPassword] = useState("");
 
-  const { formData } = useContext(CommentsStateContext);
-  const { onRemove } = useContext(CommentsFunctionContext);
-
+  const { getCommentsData } = useCommentsStateContext();
+  const { onRemove } = useCommentsFunctionContext();
   //onClickEvent 누르면 onRemoveComments 작동
   const handleConfirmPassword = (
     key: number,
@@ -27,42 +30,130 @@ function CommentsList() {
     setPassword("");
   };
   return (
-    <>
-      <div>
-        {formData.map((item) => (
-          <div className="commentsList" key={item[0]}>
-            <span>아이디:{item[1]}</span>
-            <span>내용:{item[3]}</span>
-            <span>
-              시간:
-              {item[4]}
-              <button onClick={() => setModalToggleKey(item[0])}>
-                &times;
-              </button>
-              {ModalToggleKey === item[0] && (
-                <div>
-                  <input
-                    type="password"
-                    placeholder="비밀번호를 입력하세요."
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <button
-                    onClick={() => {
-                      handleConfirmPassword(item[0], password, item[2]);
-                    }}
-                  >
-                    확인
-                  </button>
-                  <button onClick={() => setModalToggleKey(0)}>&times;</button>
-                </div>
-              )}
-            </span>
-          </div>
-        ))}
-      </div>
-    </>
+    <StyledCommentsList>
+      {getCommentsData.map((item: any) => (
+        <div className="comments-item" key={item[0]}>
+          <span className="comments-userid">{item[1]}</span>
+          <span className="comments-password">{item[3]}</span>
+          <span className="comments-date">
+            {item[4]}
+            <button
+              className="comments-remove-btn"
+              onClick={() => setModalToggleKey(item[0])}
+            >
+              <VscChromeClose />
+            </button>
+            {ModalToggleKey === item[0] && (
+              <div className="remove-modal-container">
+                <input
+                  className="remove-modal-password"
+                  type="password"
+                  placeholder="PASSWORD"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  className="remove-modal-confirmbtn"
+                  onClick={() => {
+                    handleConfirmPassword(item[0], password, item[2]);
+                  }}
+                >
+                  <VscCheck />
+                </button>
+                <button
+                  className="remove-modal-cancelbtn"
+                  onClick={() => setModalToggleKey(0)}
+                >
+                  <VscChromeClose />
+                </button>
+              </div>
+            )}
+          </span>
+        </div>
+      ))}
+    </StyledCommentsList>
   );
 }
 
 export default React.memo(CommentsList);
+
+const StyledCommentsList = styled.div`
+  width: 100%;
+  .comments-item {
+    max-width: 900px;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 0.1rem solid #000;
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 0.7fr;
+    column-gap: 0.5rem;
+
+    .comments-userid {
+    }
+    .comments-password {
+    }
+    .comments-date {
+      font-size: 0.7rem;
+      font-weight: 500;
+      position: relative;
+
+      .comments-remove-btn {
+        cursor: pointer;
+        border: none;
+        background-color: #fff;
+        /* font-size: 1.8rem; */
+
+        &:hover {
+          color: #e61919;
+          padding: auto;
+        }
+      }
+      .remove-modal-container {
+        padding: 0.5rem;
+        width: 15rem;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 25px;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid black;
+        z-index: 1;
+        .remove-modal-password {
+          padding: 0.5rem 0;
+          height: 80%;
+          width: 10rem;
+          max-height: 2rem;
+          border: none;
+          border-bottom: 0.14rem solid #000;
+          padding: 0 0.5rem;
+          font-family: "pretendard";
+          font-size: 1rem;
+        }
+        .remove-modal-confirmbtn {
+          cursor: pointer;
+          border: none;
+          background-color: #fff;
+          font-size: 0.8rem;
+
+          &:hover {
+            color: #e61919;
+            padding: auto;
+          }
+        }
+        .remove-modal-cancelbtn {
+          cursor: pointer;
+          border: none;
+          background-color: #fff;
+          font-size: 0.8rem;
+
+          &:hover {
+            color: #e61919;
+            padding: auto;
+          }
+        }
+      }
+    }
+  }
+`;

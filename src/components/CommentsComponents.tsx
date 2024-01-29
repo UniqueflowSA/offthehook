@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 import CommentsList from "./CommentsList";
 import CreateComments from "./CreateComments";
 import { useParams } from "react-router-dom";
@@ -6,28 +6,101 @@ import { useParams } from "react-router-dom";
 type PostProps = {
   slug: string;
 };
-// type State = {
-//   createComments:{},
+type NewCommentsData = {
+  commentsId: number;
+  nickname?: string;
+  password?: string;
+  content?: string;
+  date: string;
+};
 
-// }
+type State = {
+  getCommentsData: string[][];
+  newCommentsData: NewCommentsData;
+};
+type CommentsStateType = {
+  getCommentsData: string[][];
+};
+type CommentsFuncType = {
+  onCreate: (
+    newNicknaeme: string,
+    newPassword: string,
+    newContent: string
+  ) => void;
+  onRemove: (key: number) => void;
+};
+type Action =
+  | { type: "SET_DATA"; getCommentsData: string[][] }
+  | { type: "CREATE_DATA"; newCommentsData: {} };
 
-export const CommentsFunctionContext = React.createContext();
-export const CommentsStateContext = React.createContext();
+const CommentsStateContext = React.createContext<CommentsStateType | null>(
+  null
+);
+const CommentsFunctionContext = React.createContext<CommentsFuncType | null>(
+  null
+);
 
-function reducer(state: [], action: any) {
+export const useCommentsFunctionContext = () => {
+  const context = useContext(CommentsFunctionContext);
+  if (!context) {
+    throw new Error("usePostContext must be used within a PostProvider");
+  }
+  return context;
+};
+export const useCommentsStateContext = () => {
+  const context = useContext(CommentsStateContext);
+  if (!context) {
+    throw new Error("usePostContext must be used within a PostProvider");
+  }
+  return context;
+};
+
+function reducer(state: State, action: Action) {
   switch (action.type) {
     case "SET_DATA": {
-      return action.data;
+      return {
+        ...state,
+        getCommentsData: action.getCommentsData,
+      };
     }
-    //REMOVE
-    //REPLY..?
+    case "CREATE_DATA": {
+      const newCommentsId = Math.floor(Math.random() * 10000000000000);
+      const newDate = new Date().toLocaleString([], {
+        year: "2-digit",
+        month: "numeric",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      return {
+        ...state,
+        newCommentsData: {
+          ...action.newCommentsData,
+
+          commentsId: newCommentsId,
+          date: newDate,
+        },
+      };
+    }
   }
 }
 
 function CommentsComponents() {
   const { slug } = useParams<PostProps>();
-  const [formData, dispatch] = useReducer(reducer, []);
-
+  const [commentsState, dispatch] = useReducer(reducer, {
+    getCommentsData: [],
+    newCommentsData: {
+      commentsId: 0,
+      nickname: "",
+      password: "",
+      content: "",
+      date: "",
+    },
+  });
+  const { getCommentsData, newCommentsData } = commentsState;
+  /**데이터 함수*/
   const onGet = () => {
     //시트 데이터 가져오기
     fetch(
@@ -38,42 +111,24 @@ function CommentsComponents() {
     )
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: "SET_DATA", data: data });
-        // setCommentsData(data);
+        dispatch({ type: "SET_DATA", getCommentsData: data });
       })
       .catch((err) => console.log(err));
   };
-  const onCreate = (createForm: {}, setCreateForm: any, submitBtnRef: any) => {
-    //데이터 시트입력
-    fetch(
-      "https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          action: "create",
-          data: createForm,
-          post: slug,
-        }),
-      }
-    )
-      .then((res) => {
-        alert("입력 완료.");
-        console.log(res);
-        setCreateForm({
-          commentsId: 0,
-          nickname: "",
-          password: "",
-          content: "",
-          date: "",
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("에러");
-      })
-      .finally(() => {
-        submitBtnRef.current.disabled = false;
-      });
+  const onCreate = (
+    newNicknaeme: string,
+    newPassword: string,
+    newContent: string
+  ) => {
+    dispatch({
+      type: "CREATE_DATA",
+      newCommentsData: {
+        nickname: newNicknaeme,
+        password: newPassword,
+        content: newContent,
+      },
+    });
+    console.log(newCommentsData);
   };
 
   const onRemove = (key: number) => {
@@ -91,7 +146,6 @@ function CommentsComponents() {
     )
       .then((res) => {
         console.log(res);
-        dispatch({ type: "SET_DATA", data: formData });
       })
       .catch((error) => {
         console.log(error);
@@ -100,11 +154,43 @@ function CommentsComponents() {
 
   useEffect(() => {
     onGet();
-  }, [formData]);
+    // console.log(commentsState);
+  }, [commentsState]);
+
+  /** commentsId부여시(handleOnSubmit)에 context(onCreate)로 fetch post실행 */
+  useEffect(() => {
+    //데이터 시트입력
+    const fetchCreateComments = async () => {
+      try {
+        await fetch(
+          "https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              action: "create",
+              data: commentsState.newCommentsData,
+              post: slug,
+            }),
+          }
+        );
+        alert("입력 완료.");
+      } catch (err) {
+        console.log(err);
+        alert("에러");
+      }
+    };
+    if (
+      newCommentsData.nickname &&
+      newCommentsData.password &&
+      newCommentsData.content
+    ) {
+      fetchCreateComments();
+    }
+  }, [newCommentsData, slug]);
 
   return (
     <>
-      <CommentsStateContext.Provider value={{ formData }}>
+      <CommentsStateContext.Provider value={{ getCommentsData }}>
         <CommentsFunctionContext.Provider value={{ onCreate, onRemove }}>
           <CreateComments />
           <CommentsList />

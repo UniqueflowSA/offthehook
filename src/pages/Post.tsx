@@ -39,21 +39,28 @@ function Post() {
   if (!getPostMetaData) {
     return <div>Loading...</div>;
   }
-  const { title, date } = getPostMetaData;
+  const { title, date, imgurl } = getPostMetaData;
 
   return (
     <StyledMarkdownContainer>
-      <div className="mdTitle">
-        <div>{title}</div>
-        <div>{date}</div>
+      <div className="md-title-container">
+        <div className="md-title-text-container">
+          <div className="md-title-name">{title}</div>
+          <div className="md-title-date">{date}</div>
+        </div>
+        <div className="title-underline"></div>
+        <div>
+          <img className="md-title-img" src={imgurl} alt="" />
+        </div>
       </div>
-      <ReactMarkdown className="mdContents" rehypePlugins={[rehypeHighlight]}>
-        {mdSource}
-      </ReactMarkdown>
-      <div className="home-button">
-        <button onClick={() => navigate("/")}>Home</button>
-      </div>
-      <div>
+      <div className="md-contents-container">
+        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+          {mdSource}
+        </ReactMarkdown>
+        <div className="home-button">
+          <button onClick={() => navigate("/")}>Home</button>
+        </div>
+        <div className="comments-list-name">Comments</div>
         <CommentsComponents />
       </div>
     </StyledMarkdownContainer>
@@ -64,6 +71,43 @@ export default Post;
 
 const StyledMarkdownContainer = styled.div`
   width: 100%;
-  max-width: 850px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  .md-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem;
+    .title-underline {
+      width: 100%;
+      border-bottom: 1px solid #000;
+    }
+    .md-title-text-container {
+      padding: 3rem;
+      .md-title-name {
+        font-size: 3.5rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+      .md-title-date {
+        text-align: center;
+      }
+    }
+
+    .md-title-img {
+      padding: 3rem 0;
+      height: 25rem;
+      object-fit: cover;
+    }
+  }
+  .md-contents-container {
+    max-width: 900px;
+    padding: 0 3rem;
+    margin: 0 auto;
+    .comments-list-name {
+      font-size: 2rem;
+      font-weight: 800;
+      border-bottom: 8px solid #000;
+      margin: 1rem 0;
+    }
+  }
 `;

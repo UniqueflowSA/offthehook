@@ -93,7 +93,6 @@ const StyledPostListContainer = styled.div<{ $listStyle: boolean | undefined }>`
       min-height: ${({ $listStyle }) => ($listStyle ? `0px` : `130px`)};
       height: 100%;
       padding: 1rem;
-
       border-bottom: 2px solid black;
 
       .post-list-title {

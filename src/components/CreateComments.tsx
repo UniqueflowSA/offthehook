@@ -1,21 +1,22 @@
-import { useEffect, useRef, useState, useContext } from "react";
-import { CommentsFunctionContext } from "./CommentsComponents";
+import { useRef, useState, useContext } from "react";
+import { useCommentsFunctionContext } from "./CommentsComponents";
+import { VscCheck } from "react-icons/vsc";
+import styled from "styled-components";
 
 //댓글 작성폼, 데이터 스프레드시트로 보내기
 function CreateComments() {
   const submitBtnRef = useRef<any>(null);
   const [createForm, setCreateForm] = useState({
-    commentsId: 0,
-    nickname: "",
+    nickname: "김아무개",
     password: "",
     content: "",
-    date: "",
   });
   /**Context호출 */
-  const { onCreate } = useContext(CommentsFunctionContext);
+
+  const { onCreate } = useCommentsFunctionContext();
 
   //createForm 구조분해
-  let { commentsId, nickname, password, content } = createForm;
+  let { nickname, password, content } = createForm;
   //useState onChange함수
   const handleChangeForm = (
     e:
@@ -25,58 +26,125 @@ function CreateComments() {
     const { name, value } = e.target;
     setCreateForm({ ...createForm, [name]: value });
   };
-  /**submit으로 id부여 및 데이터 전송*/
-  const handleOnSubmit = (e: any) => {
+  /**submit을 통해 newCommentsData에 createForm삽입*/
+  const handleOnSubmit = async (e: any) => {
     e.preventDefault();
     if (nickname && password && content) {
       submitBtnRef.current.disabled = true;
-      setCreateForm({
-        ...createForm,
-        commentsId: Math.floor(Math.random() * 10000000000000),
-        date: new Date().toLocaleString(),
-      });
+      try {
+        await onCreate(nickname, password, content);
+        setCreateForm({
+          nickname: "김아무개",
+          password: "",
+          content: "",
+        });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        submitBtnRef.current.disabled = false;
+      }
     } else {
       return alert("작성되지않은 빈칸이 존재합니다.");
     }
   };
-  /** commentsId부여시(handleOnSubmit)에 context(onCreate)로 fetch post실행 */
-  useEffect(() => {
-    console.log(createForm);
-    if (commentsId !== 0 && nickname && password && content) {
-      onCreate(createForm, setCreateForm, submitBtnRef);
-    }
-  }, [commentsId]);
 
   return (
-    <form onSubmit={handleOnSubmit}>
-      <div>
+    <StyledCommentsForm onSubmit={handleOnSubmit}>
+      <div className="userinfo-wrapper">
         <input
+          className="nickname-input"
           name="nickname"
           type="text"
+          placeholder="NICKNAME"
           value={nickname}
           onChange={handleChangeForm}
           maxLength={20}
         />
         <input
+          className="password-input"
           name="password"
           type="password"
           autoComplete="new-password"
+          placeholder="PASSWORD"
           value={password}
           onChange={handleChangeForm}
         />
       </div>
-      <div>
+      <div className="content-wrapper">
         <textarea
+          className="content-textarea"
           name="content"
           value={content}
           onChange={handleChangeForm}
+          placeholder="대앳글입력"
         ></textarea>
-        <button ref={submitBtnRef} name="submit_btn">
-          Submit
+        <button className="submit-btn" ref={submitBtnRef} name="submit_btn">
+          <VscCheck />
         </button>
       </div>
-    </form>
+    </StyledCommentsForm>
   );
 }
 
 export default CreateComments;
+
+const StyledCommentsForm = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+  padding: 2rem 1rem;
+  column-gap: 1.5rem;
+  .userinfo-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 0.5rem;
+    width: 100%;
+    height: 100%;
+    .nickname-input {
+      border: none;
+      border-bottom: 0.14rem solid #000;
+      padding: 0 0.5rem;
+      font-family: "pretendard";
+      font-size: 1rem;
+    }
+    .password-input {
+      border: none;
+      border-bottom: 0.14rem solid #000;
+      padding: 0 0.5rem;
+      font-family: "pretendard";
+      font-size: 1rem;
+    }
+  }
+  .content-wrapper {
+    display: flex;
+
+    box-sizing: border-box;
+    border-right: 0.14rem solid #000;
+    border-bottom: 0.14rem solid #000;
+
+    .content-textarea {
+      width: 99%;
+      padding: 0 0.5rem;
+      height: 4.5rem;
+      font-family: "pretendard";
+      font-size: 1rem;
+
+      border: none;
+      resize: none;
+    }
+    .submit-btn {
+      cursor: pointer;
+      border: none;
+      background-color: #fff;
+      font-size: 1.8rem;
+
+      &:hover {
+        background-color: black;
+        color: white;
+        padding: auto;
+      }
+    }
+  }
+`;
