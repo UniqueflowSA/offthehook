@@ -116,10 +116,11 @@ const StyledCommentsList = styled.div`
         position: absolute;
         top: 25px;
         left: 0;
-        background-color: #fff;
+        background-color: #f5f4ec;
         border: 1px solid black;
         z-index: 1;
         .remove-modal-password {
+          background-color: #f5f4ec;
           padding: 0.5rem 0;
           height: 80%;
           width: 10rem;
@@ -133,7 +134,7 @@ const StyledCommentsList = styled.div`
         .remove-modal-confirmbtn {
           cursor: pointer;
           border: none;
-          background-color: #fff;
+          background-color: #f5f4ec;
           font-size: 0.8rem;
 
           &:hover {
@@ -144,7 +145,7 @@ const StyledCommentsList = styled.div`
         .remove-modal-cancelbtn {
           cursor: pointer;
           border: none;
-          background-color: #fff;
+          background-color: #f5f4ec;
           font-size: 0.8rem;
 
           &:hover {
