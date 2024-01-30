@@ -96,9 +96,9 @@ const StyledCommentsList = styled.div`
       position: relative;
 
       .comments-remove-btn {
+        background-color: #f5f4ec;
         cursor: pointer;
         border: none;
-        background-color: #fff;
         /* font-size: 1.8rem; */
 
         &:hover {
