@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import styled from "styled-components";
+import "highlight.js/styles/tomorrow-night-bright.css";
 
 import CommentsComponents from "../components/CommentsComponents";
 import { usePostContext } from "../context";
@@ -54,7 +56,10 @@ function Post() {
         </div>
       </div>
       <div className="md-contents-container">
-        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight]}
+        >
           {mdSource}
         </ReactMarkdown>
         <div className="home-button">

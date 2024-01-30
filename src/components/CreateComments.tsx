@@ -108,6 +108,7 @@ const StyledCommentsForm = styled.form`
       padding: 0 0.5rem;
       font-family: "pretendard";
       font-size: 1rem;
+      background-color: #f5f4ec;
     }
     .password-input {
       border: none;
@@ -115,6 +116,7 @@ const StyledCommentsForm = styled.form`
       padding: 0 0.5rem;
       font-family: "pretendard";
       font-size: 1rem;
+      background-color: #f5f4ec;
     }
   }
   .content-wrapper {
@@ -130,6 +132,7 @@ const StyledCommentsForm = styled.form`
       height: 4.5rem;
       font-family: "pretendard";
       font-size: 1rem;
+      background-color: #f5f4ec;
 
       border: none;
       resize: none;
@@ -137,7 +140,7 @@ const StyledCommentsForm = styled.form`
     .submit-btn {
       cursor: pointer;
       border: none;
-      background-color: #fff;
+      background-color: #f5f4ec;
       font-size: 1.8rem;
 
       &:hover {

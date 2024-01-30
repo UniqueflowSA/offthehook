@@ -27,6 +27,7 @@ function CommentsList() {
     }
     setPassword("");
   };
+
   return (
     <StyledCommentsList>
       {getCommentsData.map((item: any) => (

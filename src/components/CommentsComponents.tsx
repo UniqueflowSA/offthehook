@@ -111,7 +111,11 @@ function CommentsComponents() {
     )
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: "SET_DATA", getCommentsData: data });
+        if (data[0][0] !== "") {
+          // 데이터가 존재하는 경우에만 상태를 업데이트
+          dispatch({ type: "SET_DATA", getCommentsData: data });
+        }
+        console.log(data[0]);
       })
       .catch((err) => console.log(err));
   };

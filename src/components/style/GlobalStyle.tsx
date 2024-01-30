@@ -10,13 +10,11 @@ export const GlobalStyle = createGlobalStyle`
       padding:0;
       height:100%;
       font-family: "Pretendard";
+      background-color: #f5f4ec
   }
 `;
 
 export const textOverflow = (lineCount: number) => css`
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
