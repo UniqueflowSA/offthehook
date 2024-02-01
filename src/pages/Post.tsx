@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { VscHome } from "react-icons/vsc";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -62,9 +63,7 @@ function Post() {
         >
           {mdSource}
         </ReactMarkdown>
-        <div className="home-button">
-          <button onClick={() => navigate("/")}>Home</button>
-        </div>
+
         <div className="comments-list-name">Comments</div>
         <CommentsComponents />
       </div>
@@ -108,11 +107,12 @@ const StyledMarkdownContainer = styled.div`
     max-width: 900px;
     padding: 0 3rem;
     margin: 0 auto;
+
     .comments-list-name {
       font-size: 2rem;
       font-weight: 800;
       border-bottom: 8px solid #000;
-      margin: 1rem 0;
+      margin: 10rem 0 1rem;
     }
   }
 `;

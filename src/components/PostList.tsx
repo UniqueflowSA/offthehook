@@ -58,11 +58,11 @@ export default PostList;
 
 const StyledPostListContainer = styled.div<{ $listStyle: boolean | undefined }>`
   display: grid;
-  /* flex-direction: ${({ $listStyle }) => ($listStyle ? `column` : `row`)}; */
+
   grid-template-columns: ${({ $listStyle }) =>
-    $listStyle ? `repeat(3, minmax(auto, 400px))` : `1fr`};
+    $listStyle ? `repeat(3, minmax(auto,400px))` : `1fr`};
   grid-template-rows: ${({ $listStyle }) =>
-    $listStyle ? `repeat(2, minmax(auto, 420px))` : `1fr`};
+    $listStyle ? `repeat(auto-fill,  minmax(auto,420px))` : `1fr`};
   row-gap: ${({ $listStyle }) => ($listStyle ? `.9rem;` : ``)};
 
   column-gap: 0.9rem;
@@ -73,6 +73,7 @@ const StyledPostListContainer = styled.div<{ $listStyle: boolean | undefined }>`
   .post-list-item {
     height: 100%;
     color: black;
+    border-bottom: 2px solid black;
     &:hover {
       background-color: #000;
       color: #fff;
@@ -90,10 +91,9 @@ const StyledPostListContainer = styled.div<{ $listStyle: boolean | undefined }>`
       flex-direction: column;
       justify-content: space-between;
       max-height: 150px;
-      min-height: ${({ $listStyle }) => ($listStyle ? `0px` : `130px`)};
+      min-height: ${({ $listStyle }) => ($listStyle ? `150px` : `130px`)};
       height: 100%;
       padding: 1rem;
-      border-bottom: 2px solid black;
 
       .post-list-title {
         ${textOverflow(1)}

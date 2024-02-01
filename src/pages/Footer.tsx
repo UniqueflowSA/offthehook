@@ -5,7 +5,12 @@ function Footer() {
   return (
     <StyledFooter>
       <div className="footer-inner">
-        <div>Copyright © 2024. UniqueFlowSA All rights reserved.</div>
+        <div>Copyright © 2024. OFFTHEHOOK All rights reserved.</div>
+        <img
+          className="footer-logo"
+          src="/img/logo.png"
+          alt="OFFTHEHOOK로고이미지입니다."
+        />
       </div>
     </StyledFooter>
   );
@@ -22,8 +27,11 @@ const StyledFooter = styled.div`
     padding: 5rem 2% 1rem;
     max-width: 1360px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    .footer-logo {
+      width: 20rem;
+    }
   }
 `;

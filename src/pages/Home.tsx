@@ -8,9 +8,10 @@ function Home() {
   const { posts } = usePostContext();
 
   const allPosts = posts.filter((post) => post.category !== "notice");
-  // const recommendedPosts = posts.filter(
-  //   (post) => post.slug === "1" || "2" || "3"
-  // );
+  const recommendedPosts = [posts[1], posts[2], posts[3], posts[4]].filter(
+    Boolean
+  );
+  console.log(posts[2]);
 
   return (
     <StyledHomeContainer>
@@ -18,7 +19,7 @@ function Home() {
       <div className="home-menu-container">
         <div className="post-list-wrapper recommend">
           <div className="post-list-name">Recommend</div>
-          <PostList posts={posts} listStyle={true} />
+          <PostList posts={recommendedPosts} listStyle={true} />
         </div>
         <div className="post-list-wrapper all">
           <div className="post-list-name">All</div>
