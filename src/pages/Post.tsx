@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { VscHome } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -17,7 +16,6 @@ function Post() {
   const [mdSource, setMdSource] = useState<string | null>(null);
   const { category, slug } = useParams<PostProps>(); //category 폴더 추가시에 추가요망
   const { posts } = usePostContext();
-  const navigate = useNavigate();
   useEffect(() => {
     const fetchPostContent = async () => {
       try {
