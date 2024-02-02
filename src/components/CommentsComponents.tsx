@@ -159,7 +159,7 @@ function CommentsComponents() {
   useEffect(() => {
     onGet();
     console.log(commentsState);
-  }, []);
+  }, [commentsState]);
 
   /** commentsId부여시(handleOnSubmit)에 context(onCreate)로 fetch post실행 */
   useEffect(() => {
