@@ -153,12 +153,15 @@ function CommentsComponents() {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        onGet();
       });
   };
 
   useEffect(() => {
     onGet();
-    console.log(commentsState);
+    // console.log(commentsState)
   }, [commentsState]);
 
   /** commentsId부여시(handleOnSubmit)에 context(onCreate)로 fetch post실행 */
