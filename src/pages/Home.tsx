@@ -8,9 +8,7 @@ function Home() {
   const { posts } = usePostContext();
 
   const allPosts = posts.filter((post) => post.category !== "notice");
-  const recommendedPosts = [posts[1], posts[2], posts[3], posts[4]].filter(
-    Boolean
-  );
+  const recommendedPosts = [posts[1], posts[2], posts[3]].filter(Boolean);
   console.log(posts[2]);
 
   return (

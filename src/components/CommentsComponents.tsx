@@ -111,11 +111,21 @@ function CommentsComponents() {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data[0][0] !== "") {
-          // 데이터가 존재하는 경우에만 상태를 업데이트
+        if (data.length === 1 && data[0][0] === "") {
+          // 데이터가 없을 때 문구 출력
+          const emptyData = [
+            "",
+            "관리자",
+            "",
+            "작성된 댓글이 없습니다.",
+            "00. 0. 0 00:00:00",
+          ];
+          dispatch({ type: "SET_DATA", getCommentsData: [emptyData] });
+        } else {
           dispatch({ type: "SET_DATA", getCommentsData: data });
         }
-        console.log(data[0]);
+
+        console.log(data.length);
       })
       .catch((err) => console.log(err));
   };
@@ -150,12 +160,10 @@ function CommentsComponents() {
     )
       .then((res) => {
         console.log(res);
+        onGet();
       })
       .catch((error) => {
         console.log(error);
-      })
-      .finally(() => {
-        onGet();
       });
   };
 
@@ -181,6 +189,7 @@ function CommentsComponents() {
           }
         );
         alert("입력 완료.");
+        onGet();
       } catch (err) {
         console.log(err);
         alert("에러");
