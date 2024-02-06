@@ -5,11 +5,12 @@ import { PostList } from "../components";
 
 function Home() {
   //contextAPI 호출로 posts값 가져오기
-  const { posts } = usePostContext();
-
-  const allPosts = posts.filter((post) => post.category !== "notice");
+  const { posts, seriesPost } = usePostContext();
   const recommendedPosts = [posts[1], posts[2], posts[3]].filter(Boolean);
-  console.log(posts[2]);
+  const seriesList = seriesPost.filter(
+    (post) => post.slug.charAt(post.slug.length - 1) === "0"
+  );
+  console.log(seriesList);
 
   return (
     <StyledHomeContainer>
@@ -20,8 +21,12 @@ function Home() {
           <PostList posts={recommendedPosts} listStyle={true} />
         </div>
         <div className="post-list-wrapper all">
+          <div className="post-list-name">Series</div>
+          <PostList posts={seriesList} listStyle={false} isSeriesPost={true} />
+        </div>
+        <div className="post-list-wrapper all">
           <div className="post-list-name">All</div>
-          <PostList posts={allPosts} listStyle={false} />
+          <PostList posts={posts} listStyle={false} />
         </div>
       </div>
     </StyledHomeContainer>

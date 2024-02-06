@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer, useContext } from "react";
+import React, { memo, useEffect, useReducer, useContext } from "react";
 import CommentsList from "./CommentsList";
 import CreateComments from "./CreateComments";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type PostProps = {
+  category: string;
   slug: string;
 };
 type NewCommentsData = {
@@ -88,7 +89,7 @@ function reducer(state: State, action: Action) {
 }
 
 function CommentsComponents() {
-  const { slug } = useParams<PostProps>();
+  const { category, slug } = useParams<PostProps>();
   const [commentsState, dispatch] = useReducer(reducer, {
     getCommentsData: [],
     newCommentsData: {
@@ -190,11 +191,13 @@ function CommentsComponents() {
         );
         alert("입력 완료.");
         onGet();
+        dispatch({ type: "CREATE_DATA", newCommentsData: {} });
       } catch (err) {
         console.log(err);
         alert("에러");
       }
     };
+
     if (
       newCommentsData.nickname &&
       newCommentsData.password &&
@@ -202,7 +205,7 @@ function CommentsComponents() {
     ) {
       fetchCreateComments();
     }
-  }, [newCommentsData, slug]);
+  }, [newCommentsData, slug, category]);
 
   return (
     <>

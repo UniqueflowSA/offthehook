@@ -14,21 +14,22 @@ type PostMetadata = {
 type PostListProps = {
   posts: PostMetadata[];
   listStyle: boolean;
+  isSeriesPost?: boolean;
 };
 
-function PostList({ posts, listStyle }: PostListProps) {
+function PostList({ posts, listStyle, isSeriesPost }: PostListProps) {
   return (
     <StyledPostListContainer $listStyle={listStyle}>
       {posts.map((post) => {
+        const LinkPath = !isSeriesPost
+          ? `/posts/${post.category}/${post.slug}`
+          : `/series/${post.category}/${post.slug}`;
         return (
           <div key={post.slug}>
             {/*key를 slug로 지정  */}
 
             {/** 포스트 개별 링크생성 */}
-            <Link
-              className="link-style"
-              to={`/posts/${post.category}/${post.slug}`}
-            >
+            <Link className="link-style" to={LinkPath}>
               <div className="post-list-item">
                 {listStyle && (
                   <img src={post.imgurl} className="post-list-img" />
@@ -76,7 +77,7 @@ const StyledPostListContainer = styled.div<{ $listStyle: boolean | undefined }>`
     border-bottom: 2px solid black;
     &:hover {
       background-color: #000;
-      color: #fff;
+      color: #f5f4ec;
     }
     .post-list-img {
       max-width: 400px;

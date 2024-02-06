@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -69,7 +69,7 @@ function Post() {
   );
 }
 
-export default Post;
+export default React.memo(Post);
 
 const StyledMarkdownContainer = styled.div`
   width: 100%;

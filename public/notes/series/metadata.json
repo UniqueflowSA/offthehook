@@ -1,0 +1,34 @@
+[
+  {
+    "title": "testSeries",
+    "summary": "",
+    "date": "2024-02-07",
+    "category": "notice",
+    "slug": "notice_0",
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
+  },
+  {
+    "title": "1. 테스트로 작성되었습니다.",
+    "summary": "",
+    "date": "2024-02-07",
+    "category": "notice",
+    "slug": "notice_1",
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
+  },
+  {
+    "title": "2. 테스트로 작성됐다!",
+    "summary": "",
+    "date": "2024-02-07",
+    "category": "notice",
+    "slug": "notice_2",
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
+  },
+  {
+    "title": "testSeries222",
+    "summary": "",
+    "date": "2024-01-30",
+    "category": "testPro2",
+    "slug": "testPro2_0",
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
+  }
+]
