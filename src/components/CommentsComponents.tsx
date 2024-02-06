@@ -1,7 +1,7 @@
-import React, { memo, useEffect, useReducer, useContext } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 import CommentsList from "./CommentsList";
 import CreateComments from "./CreateComments";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 type PostProps = {
   category: string;
