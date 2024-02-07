@@ -115,6 +115,7 @@ doGet()은 데이터를 받아오고 파일명(slug)에 해당하는 댓글 시�
 doPost()는 전달되는 body.action에 따라 댓글 생성, 삭제를 수행합니다.
 
 ```
+<!-- /src/components/CommentsComponents -->
   const onGet = () => {
     //시트 데이터 가져오기
   fetch(
@@ -127,11 +128,11 @@ doPost()는 전달되는 body.action에 따라 댓글 생성, 삭제를 수행�
  const onRemove = (key: number) => {
     //댓글 삭제기능
     fetch(
-      "https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec",
+      "URL",
       {
         method: "POST",
         body: JSON.stringify({
-          action: "remove",
+          action: "remove", //삭제수행
           data: key,
           post: slug,
         }),
@@ -142,14 +143,18 @@ doPost()는 전달되는 body.action에 따라 댓글 생성, 삭제를 수행�
 const fetchCreateComments = async () => {
       try {
         await fetch(
-          "https://script.google.com/macros/s/AKfycbwrycsxPh3pRMnFBf_kZ62Kx_jBwMbZurkSsdpGkaBXS5TONVQDWBnUxDqm6JL4EtqA/exec",
+          "URL",
           {
             method: "POST",
             body: JSON.stringify({
-              action: "create",
+              action: "create", //생성수행
               data: commentsState.newCommentsData,
               post: slug,
             }),
           }
 
 ```
+
+> GarlicB님에게 감사드립니다.  
+> 핵심기능인 md파일 렌더링, 리스트생성에 대한 코드를 참고했습니다.  
+> https://github.com/GarlicB/blog
