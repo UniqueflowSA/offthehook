@@ -6,29 +6,5 @@
     "category": "blabla",
     "slug": "2",
     "imgurl": "https://media.giphy.com/media/1zkVuO55wfgDC/giphy.gif?cid=ecf05e47uudqpl6ujlelusiwqrd4ar0qb39wzrgtp23d2fdk&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-  },
-  {
-    "title": "효율적인 코드 작성법",
-    "summary": "효율적인 코드 작성을 위한 팁과 관례",
-    "date": "2024-01-12",
-    "category": "coding",
-    "slug": "3",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWx1d2xicXk0djVoZTg4cnBpdDkyYjhyZGM1bGJ6cHR5bHdsb25kOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/twxoPjMpsijwPFBVqs/giphy.gif"
-  },
-  {
-    "title": "보안 취약점 점검 방법",
-    "summary": "애플리케이션의 보안 취약점을 점검하는 방법과 도구 소개하려고 하는데 왜 그런지 나도 몰라 ㅇㅇㅁㄴ아ㅓㄴㅁ아ㅓㅁㄴ아ㅓ아이안이ㅏㄴ마움넝ㅁ누아ㅓㄴ무암너우운마ㅓ움나ㅓ움나ㅓㅇㅁ니ㅏ엄니ㅏ어미나어",
-    "date": "2024-01-11",
-    "category": "blabla",
-    "slug": "4",
-    "imgurl": "https://media.giphy.com/media/vwI4mYEHP8k0w/giphy.gif?cid=790b76116kw4ej4zdjdcyviw1ga1p8anhxm2qjwx75fwkw5g&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-  },
-  {
-    "title": "얄리얄리 얄라셩 얄라리 얄라",
-    "summary": "더미데이터를 작성해보았습니다.",
-    "date": "2024-02-01",
-    "category": "blabla",
-    "slug": "dummypost",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW42ZzNmNHluZHdiOXBubTlvZGJmbTRzOXlkaW9ya3NxMzhzcGthMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tsX3YMWYzDPjAARfeg/giphy.gif"
   }
 ]

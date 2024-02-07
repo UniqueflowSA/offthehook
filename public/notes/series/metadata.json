@@ -1,34 +1,10 @@
 [
   {
-    "title": "testSeries",
-    "summary": "",
+    "title": "블로그 운영일지",
+    "summary": "블로그를 운영하면서 이것저것,다사다난 근황을 적습니다. ",
     "date": "2024-02-07",
     "category": "notice",
     "slug": "notice_0",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
-  },
-  {
-    "title": "1. 테스트로 작성되었습니다.",
-    "summary": "",
-    "date": "2024-02-07",
-    "category": "notice",
-    "slug": "notice_1",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
-  },
-  {
-    "title": "2. 테스트로 작성됐다!",
-    "summary": "",
-    "date": "2024-02-07",
-    "category": "notice",
-    "slug": "notice_2",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
-  },
-  {
-    "title": "testSeries222",
-    "summary": "",
-    "date": "2024-01-30",
-    "category": "testPro2",
-    "slug": "testPro2_0",
-    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGV1eHozeTkyZXBqb3E1Z2lnaWJ0OGpob3cyZ3FqZWw2dXMzcWt5aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26FLdmIp6wJr91JAI/giphy.gif"
+    "imgurl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnNkeGpqNnB3MWx5eDdzNWM2MWduZHh2enF1cGEwNWNqbmc5MDl0YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgG50Fb7Mi0prBC/giphy.gif"
   }
 ]
